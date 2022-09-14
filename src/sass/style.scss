@@ -1,0 +1,157 @@
+@import 'libs/bootstrap-reboot.min';
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+
+
+body {
+    color: #fff;
+    
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.loader {
+    min-height: 20vh;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.weather {
+    margin-top: 100px;
+    width: 60vw;
+    background-color: #448aff;
+    border-radius: 20px;
+    padding: 30px;
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 2fr 5px repeat(4, 1fr);
+    }
+}
+
+.bar {
+    background-color: #fff;
+    width: 2px;
+    height: 200px;
+}
+
+.item_box {
+    justify-self: center;
+    align-self: center;
+}
+
+.item_title {
+    font-size: 24px;
+    
+}
+.item_subtitle {
+    font-size: 24px; 
+}
+
+.item_degrees {
+    font-size: 28px;
+}
+
+.temperature_box {
+    display: flex;
+    justify-content:center;
+
+}
+
+.temperature_text {
+    font-size: 90px;
+}
+.current_deg {
+    width: 64px;
+    height: 64px;
+    margin-top: 40px;
+    img {
+        width: 100%;
+    }
+}
+
+.hourly_deg {
+    width: 32px;
+    height: 32px;
+}
+.weather_descr {
+    font-weight: bold;
+    color:rgb(190, 190, 41);
+}
+
+.fz16 {
+    font-size: 18px;
+}
+
+.fz22 {
+    font-size: 22px;
+}
+
+.temperature_title {
+    text-align: center;
+}
+.temperature_subtitle {
+    text-align: center;
+}
+
+.atmosphere {
+    margin-top: 20px;
+    width: 57vw;
+    background-color: #105de1;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.atmosphere_wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.atmosphere_icon {
+    img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.atmosphere_text {
+    font-size: 20px;
+    margin-left: 15px;
+    span {
+        margin-right: 5px;
+    }
+}
+
+.atmosphere_item {
+    align-self:center;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+
+    &:after {
+        content: "";
+        width: 2px;
+        background: #fff;
+        opacity: 0.4;
+        position: absolute;
+        top: 10%;
+        height: 80%;
+        right: 0;
+         
+    }
+    &:last-child {
+        &:after{
+            display: none;
+        }
+    } 
+}
+
+
