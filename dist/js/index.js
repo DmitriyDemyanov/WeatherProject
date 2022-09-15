@@ -4,6 +4,15 @@ class Time {
 
     this.time = null;
 
+    this.timeDate = document.querySelector(".timeDate");
+    console.log(this.timeDate);
+    const now = new Date(Date.now());
+    this.timeDate.textContent = now.toLocaleDateString("ru", {
+      day: "numeric",
+      month: "long",
+      weekday: "long",
+    });
+
     this.updateTime();
   }
 
@@ -65,6 +74,13 @@ class Weather {
     return new Date(ms).getDate();
   }
 
+  convertToTemp(num) {
+    if (num > 0) {
+      return `+${num}`;
+    }
+    return num;
+  }
+
   async fetchForecast() {
     const res = await this.fetchWeather(this.forecastUrl);
     console.log(">>>>>");
@@ -79,6 +95,30 @@ class Weather {
       return false;
     });
     console.log("----", filteredList);
+    const nodes = [...document.querySelectorAll(".item_box")];
+    console.log("====", nodes);
+
+    filteredList.forEach((el, idx) => {
+      const date = new Date(el.dt * 1000);
+      const node = nodes[idx];
+      if (node) {
+        const temp = node.querySelector(".item_degrees");
+        const image = node.querySelector(".item_icon");
+        const descr = node.querySelector(".item_subtitle");
+        const itemTitle = node.querySelector(".item_title");
+        itemTitle.textContent = date.toLocaleDateString("ru", {
+          day: "numeric",
+          month: "long",
+        });
+
+        descr.textContent = el.weather[0].description;
+        temp.textContent = this.convertToTemp(Math.round(el.main.temp));
+        image.setAttribute(
+          "src",
+          `http://openweathermap.org/img/wn/${el.weather[0].icon}.png`
+        );
+      }
+    });
   }
 
   async fetchCurrent() {
@@ -92,8 +132,12 @@ class Weather {
       "src",
       `http://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`
     );
-    this.currentTemp.textContent = Math.round(res.main.temp);
-    this.feelTemp.textContent = Math.round(res.main.feels_like);
+    this.currentTemp.textContent = this.convertToTemp(
+      Math.round(res.main.temp)
+    );
+    this.feelTemp.textContent = this.convertToTemp(
+      Math.round(res.main.feels_like)
+    );
     this.currentdescr.textContent = res.weather[0].description;
     this.humidity.textContent = res.main.humidity;
     this.wind.textContent = res.wind.speed;

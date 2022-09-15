@@ -33,6 +33,7 @@ h1 {
     &__wrapper {
         display: grid;
         grid-template-columns: 2fr 5px repeat(4, 1fr);
+        text-align: center;
     }
 }
 
@@ -42,11 +43,6 @@ h1 {
     height: 200px;
 }
 
-.item_box {
-    justify-self: center;
-    align-self: center;
-}
-
 .item_title {
     font-size: 24px;
     
@@ -54,8 +50,7 @@ h1 {
 .item_subtitle {
     font-size: 24px; 
 }
-
-.item_degrees {
+.wrap_degrees {
     font-size: 28px;
 }
 
@@ -75,11 +70,6 @@ h1 {
     img {
         width: 100%;
     }
-}
-
-.hourly_deg {
-    width: 32px;
-    height: 32px;
 }
 .weather_descr {
     font-weight: bold;
